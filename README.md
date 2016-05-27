@@ -2,7 +2,7 @@
 
 ## What is this?
 This software allows mass node import into NetXMS from a .csv file.<br>
-It was created to easy transition from other NMSs into NetXMS.
+It was created to ease the transition from other NMSs into NetXMS.
 
 ## How to use the importer.
 You can download the .jar from the [Releases](https://github.com/tomaskir/NetXMS-csv-importer/releases) page.
