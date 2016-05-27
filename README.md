@@ -22,4 +22,4 @@ You can copy the example file from the 'examples' directory and modify to it to 
 #####nodes.csv
 This file contains the actual nodes to import into NetXMS.<br>
 The name of this file can be configured in the 'configuration.properties' file.<br>
-Example of the properly formated .csv file is present in the 'examples' directory.
+Example of the properly formatted .csv file is present in the 'examples' directory.
