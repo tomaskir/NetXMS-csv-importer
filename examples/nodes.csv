@@ -1,0 +1,3 @@
+Node name, Address, Container to bind to
+Example server 1, 1.1.1.1, Servers
+Example server 2, 2.2.2.2, Other container
