@@ -1,0 +1,39 @@
+# Generic Java 
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs
+hs_err_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IntelliJ IDEA and Android Studio
+*.iml
+.idea/
+*.ipr
+*.iws
+/out/
+.idea_modules/
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for IntelliJ IDEA and Android Studio)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
