@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.netxms.client.NXCException;
 import org.netxms.client.NXCObjectCreationData;
 import org.netxms.client.NXCSession;
+import org.netxms.client.ObjectFilter;
 import org.netxms.client.objects.AbstractObject;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public final class NetxmsConnector {
     }
 
     public void addNodes(List<CsvNode> nodeList) throws IOException, NXCException {
-        for (CsvNode node : nodeList) {
+        for (final CsvNode node : nodeList) {
             System.out.print(".");
 
             AbstractObject object = nxcSession.findObjectByName(node.getName());
@@ -37,7 +38,16 @@ public final class NetxmsConnector {
                 continue;
             }
 
-            AbstractObject container = nxcSession.findObjectByName(node.getContainer());
+            // create object filter to find the node's container
+            ObjectFilter filter = new ObjectFilter() {
+                @Override
+                public boolean filter(AbstractObject object) {
+                    return object.getObjectClass() == AbstractObject.OBJECT_CONTAINER && object.getObjectName().equals(node.getContainer());
+                }
+            };
+
+            // find node's container
+            AbstractObject container = nxcSession.findObject(filter);
             if (container == null) {
                 System.out.println();
                 System.out.println("Warning - container '" + node.getContainer() + "' not found for node '" + node.getName() + "', not creating node.");
