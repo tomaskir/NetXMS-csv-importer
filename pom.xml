@@ -13,8 +13,7 @@
         <source.encoding>utf-8</source.encoding>
         <java.version>1.7</java.version>
         <lombok.version>1.16.8</lombok.version>
-        <netxms-client.version>2.1-SNAPSHOT</netxms-client.version>
-        <simple-xml.version>2.7.1</simple-xml.version> <!--remove this when NetXMS maven repo updates-->
+        <netxms-client.version>2.0.3</netxms-client.version>
     </properties>
 
     <dependencies>
@@ -28,20 +27,6 @@
             <groupId>org.netxms</groupId>
             <artifactId>netxms-client</artifactId>
             <version>${netxms-client.version}</version>
-        </dependency>
-
-        <!--remove this when NetXMS maven repo updates-->
-        <dependency>
-            <groupId>org.netxms</groupId>
-            <artifactId>netxms-base</artifactId>
-            <version>${netxms-client.version}</version>
-        </dependency>
-
-        <!--remove this when NetXMS maven repo updates-->
-        <dependency>
-            <groupId>org.simpleframework</groupId>
-            <artifactId>simple-xml</artifactId>
-            <version>${simple-xml.version}</version>
         </dependency>
     </dependencies>
 
