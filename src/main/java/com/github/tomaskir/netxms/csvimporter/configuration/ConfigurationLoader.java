@@ -16,10 +16,11 @@ public final class ConfigurationLoader {
 
     public Properties load(String fileName) throws IOException {
         Properties properties = new Properties();
-        FileReader fileReader = new FileReader(Paths.get(fileName).toAbsolutePath().toString());
+        String propertiesFilePath = Paths.get(fileName).toAbsolutePath().toString();
 
-        properties.load(fileReader);
-        fileReader.close();
+        try (FileReader fr = new FileReader(propertiesFilePath)) {
+            properties.load(fr);
+        }
 
         return properties;
     }

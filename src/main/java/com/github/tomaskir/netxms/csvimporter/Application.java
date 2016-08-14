@@ -37,8 +37,7 @@ public final class Application {
             System.out.println("Creating nodes on the NetXMS server.");
             NetxmsConnector.getInstance().addNodes(nodeList);
         } catch (Exception e) {
-            System.out.println("Error - '" + e.getClass().getSimpleName() + "'!");
-            System.out.println("Error message - '" + e.getMessage() + "'.");
+            System.out.println("Error: " + e.getClass().getSimpleName() + " - " + e.getMessage() + ".");
             return;
         }
 
