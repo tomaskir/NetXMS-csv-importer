@@ -28,10 +28,20 @@ public final class NetxmsConnector {
     }
 
     public void addNodes(List<CsvNode> nodeList) throws IOException, NXCException {
+        ObjectFilter filter;
+
         for (final CsvNode node : nodeList) {
             System.out.print(".");
 
-            AbstractObject object = nxcSession.findObjectByName(node.getName());
+            // create object filter to check for node duplicity by name and address
+            filter = new ObjectFilter() {
+                @Override
+                public boolean filter(AbstractObject object) {
+                    return object.getObjectClass() == AbstractObject.OBJECT_NODE &&
+                            (object.getObjectName().equals(node.getName()) || ((Node) object).getPrimaryName().equals(node.getAddress()));
+                }
+            };
+
             if (object != null) {
                 System.out.println();
                 System.out.println("Warning - object with name '" + node.getName() + "' already exists, not creating the node.");
@@ -39,7 +49,7 @@ public final class NetxmsConnector {
             }
 
             // create object filter to find the node's container
-            ObjectFilter filter = new ObjectFilter() {
+            filter = new ObjectFilter() {
                 @Override
                 public boolean filter(AbstractObject object) {
                     return object.getObjectClass() == AbstractObject.OBJECT_CONTAINER && object.getObjectName().equals(node.getContainer());
