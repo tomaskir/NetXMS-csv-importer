@@ -9,6 +9,7 @@ import org.netxms.client.NXCObjectCreationData;
 import org.netxms.client.NXCSession;
 import org.netxms.client.ObjectFilter;
 import org.netxms.client.objects.AbstractObject;
+import org.netxms.client.objects.Node;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +17,9 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class NetxmsConnector {
     @Getter
-    private final static NetxmsConnector instance = new NetxmsConnector();
+    private static final NetxmsConnector instance = new NetxmsConnector();
+
+    private static final int INFRASTRUCTURE_SERVICES_ID = 2;
 
     private NXCSession nxcSession;
 
@@ -27,8 +30,10 @@ public final class NetxmsConnector {
         nxcSession.syncObjects();
     }
 
-    public void addNodes(List<CsvNode> nodeList) throws IOException, NXCException {
+    public void addNodes(List<CsvNode> nodeList, boolean createContainers) throws IOException, NXCException {
         ObjectFilter filter;
+        NXCObjectCreationData objectCreationData;
+        long nodeParentId;
 
         for (final CsvNode node : nodeList) {
             System.out.print(".");
@@ -42,9 +47,10 @@ public final class NetxmsConnector {
                 }
             };
 
+            AbstractObject object = nxcSession.findObject(filter);
             if (object != null) {
                 System.out.println();
-                System.out.println("Warning - object with name '" + node.getName() + "' already exists, not creating the node.");
+                System.out.println("Warning - object with name '" + node.getName() + "' or address '" + node.getAddress() + "' already exists, not creating the node.");
                 continue;
             }
 
@@ -59,13 +65,24 @@ public final class NetxmsConnector {
             // find node's container
             AbstractObject container = nxcSession.findObject(filter);
             if (container == null) {
-                System.out.println();
-                System.out.println("Warning - container '" + node.getContainer() + "' not found for node '" + node.getName() + "', not creating node.");
-                continue;
+                // if not found, behaviour determined by "import.create.containers" config property
+                if (!createContainers) {
+                    // log warning
+                    System.out.println();
+                    System.out.println("Warning - container '" + node.getContainer() + "' not found for node '" + node.getName() + "', not creating node.");
+                    continue;
+                } else {
+                    // create container
+                    objectCreationData = new NXCObjectCreationData(AbstractObject.OBJECT_CONTAINER, node.getContainer(), INFRASTRUCTURE_SERVICES_ID);
+                    nodeParentId = nxcSession.createObject(objectCreationData);
+                }
+            } else {
+                // if found, use it as node's parent
+                nodeParentId = container.getObjectId();
             }
 
             // object creation data
-            NXCObjectCreationData objectCreationData = new NXCObjectCreationData(AbstractObject.OBJECT_NODE, node.getName(), container.getObjectId());
+            objectCreationData = new NXCObjectCreationData(AbstractObject.OBJECT_NODE, node.getName(), nodeParentId);
             objectCreationData.setPrimaryName(node.getAddress());
 
             // create the object

@@ -16,6 +16,7 @@ public final class Application {
     private static final String NXMS_PORT_PROPERTY = "netxms.port";
     private static final String NXMS_USERNAME_PROPERTY = "netxms.username";
     private static final String NXMS_PASSWORD_PROPERTY = "netxms.password";
+    private static final String IMPORT_CREATE_CONTAINERS_PROPERTY = "import.create.containers";
 
     public static void main(String[] args) {
         Properties properties;
@@ -35,7 +36,7 @@ public final class Application {
                     properties.getProperty(NXMS_USERNAME_PROPERTY), properties.getProperty(NXMS_PASSWORD_PROPERTY));
 
             System.out.println("Creating nodes on the NetXMS server.");
-            NetxmsConnector.getInstance().addNodes(nodeList);
+            NetxmsConnector.getInstance().addNodes(nodeList, Boolean.parseBoolean(properties.getProperty(IMPORT_CREATE_CONTAINERS_PROPERTY)));
         } catch (Exception e) {
             System.out.println("Error: " + e.getClass().getSimpleName() + " - " + e.getMessage() + ".");
             return;
