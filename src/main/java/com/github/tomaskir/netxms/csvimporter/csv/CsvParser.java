@@ -50,6 +50,8 @@ public final class CsvParser {
             nodeList.add(new CsvNode(elements[0], elements[1], elements[2]));
         }
 
+        System.out.println("Found " + nodeList.size() + " nodes in .csv file.");
+
         fileScanner.close();
         return nodeList;
     }
