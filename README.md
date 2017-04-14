@@ -1,4 +1,4 @@
-#NetXMS .csv importer
+# NetXMS .csv importer
 
 ## What is this?
 This software allows mass node import into NetXMS from a .csv file.<br>
@@ -16,10 +16,10 @@ After downloading the .jar and creating the configuration files, you can run the
 
 ## Configuration files
 
-#####configuration.properties
+##### configuration.properties
 This file sets the basic configuration of the importer.<br>
 You can copy the example file from the 'examples' directory and modify to it to fit your environment.
-#####nodes.csv
+##### nodes.csv
 This file contains the actual nodes to import into NetXMS.<br>
 The name of this file can be configured in the 'configuration.properties' file.<br>
 Example of the properly formatted .csv file is present in the 'examples' directory.
