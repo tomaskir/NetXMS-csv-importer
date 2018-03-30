@@ -13,7 +13,7 @@
         <source.encoding>utf-8</source.encoding>
         <java.version>1.7</java.version>
         <lombok.version>1.16.10</lombok.version>
-        <netxms-client.version>2.0.4</netxms-client.version>
+        <netxms-client.version>2.2.1</netxms-client.version>
     </properties>
 
     <dependencies>
