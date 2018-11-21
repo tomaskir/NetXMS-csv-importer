@@ -61,7 +61,6 @@ public final class NetxmsConnector {
                     return object.getObjectClass() == AbstractObject.OBJECT_CONTAINER && object.getObjectName().equals(node.getContainer());
                 }
             };
-
             // find node's container
             AbstractObject container = nxcSession.findObject(filter);
             if (container == null) {
@@ -75,6 +74,13 @@ public final class NetxmsConnector {
                     // create container
                     objectCreationData = new NXCObjectCreationData(AbstractObject.OBJECT_CONTAINER, node.getContainer(), INFRASTRUCTURE_SERVICES_ID);
                     nodeParentId = nxcSession.createObject(objectCreationData);
+                    //Add delay of 1 second before creating. Fixes issue with duplicate containers.
+                    try{
+                        Thread.sleep(1000);
+                    }
+                    catch(InterruptedException ex){
+                        Thread.currentThread().interrupt();
+                    }
                 }
             } else {
                 // if found, use it as node's parent
