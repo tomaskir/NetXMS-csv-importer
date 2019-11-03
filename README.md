@@ -12,7 +12,7 @@ These should be places in the working directory of the application (same directo
 More on the configuration files in the next section.
 
 After downloading the .jar and creating the configuration files, you can run the importer using:
-> java -jar netxms-csv-importer.1.1.2.jar
+> java -jar netxms-csv-importer.1.1.3.jar
 
 ## Configuration files
 
