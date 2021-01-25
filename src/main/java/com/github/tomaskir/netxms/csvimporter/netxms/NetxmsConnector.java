@@ -74,7 +74,7 @@ public final class NetxmsConnector {
                 } else {
                     // create container
                     objectCreationData = new NXCObjectCreationData(AbstractObject.OBJECT_CONTAINER, node.getContainer(), INFRASTRUCTURE_SERVICES_ID);
-                    nodeParentId = nxcSession.createObject(objectCreationData);
+                    nodeParentId = nxcSession.createObjectSync(objectCreationData).getObjectId();
                 }
             } else {
                 // if found, use it as node's parent
