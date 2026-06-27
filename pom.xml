@@ -22,7 +22,7 @@
         <java.version>11</java.version>
         <lombok.version>1.18.38</lombok.version>
         <netxms-client.version>5.2.0</netxms-client.version>
-        <slf4j.version>2.0.16</slf4j.version>
+        <slf4j.version>2.0.18</slf4j.version>
         <junit.version>5.10.2</junit.version>
         <mockito.version>5.11.0</mockito.version>
     </properties>
