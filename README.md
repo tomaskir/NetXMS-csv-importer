@@ -4,7 +4,7 @@
 This software allows mass node import into NetXMS from a .csv file.<br>
 It was created to ease the transition from other NMSs into NetXMS.
 
-It is built against the official NetXMS Java client, version 5.2.0.
+It is built against the official NetXMS Java client, version 6.1.1.
 
 ## Requirements
 Java 17 or newer is required to run the importer.
