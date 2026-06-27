@@ -41,7 +41,7 @@ public final class NetxmsConnector {
             // create object filter to check for node duplicity by name and address
             filter = new ObjectFilter() {
                 @Override
-                public boolean filter(AbstractObject object) {
+                public boolean accept(AbstractObject object) {
                     return object.getObjectClass() == AbstractObject.OBJECT_NODE &&
                             (object.getObjectName().equals(node.getName()) || ((Node) object).getPrimaryName().equals(node.getAddress()));
                 }
@@ -57,7 +57,7 @@ public final class NetxmsConnector {
             // create object filter to find the node's container
             filter = new ObjectFilter() {
                 @Override
-                public boolean filter(AbstractObject object) {
+                public boolean accept(AbstractObject object) {
                     return object.getObjectClass() == AbstractObject.OBJECT_CONTAINER && object.getObjectName().equals(node.getContainer());
                 }
             };
