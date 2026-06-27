@@ -6,6 +6,9 @@ It was created to ease the transition from other NMSs into NetXMS.
 
 It is built against the official NetXMS Java client, version 5.2.0.
 
+## Requirements
+Java 17 or newer is required to run the importer.
+
 ## How to use the importer.
 You can download the .jar from the [Releases](https://github.com/tomaskir/NetXMS-csv-importer/releases) page.
 
@@ -47,7 +50,7 @@ The address can be an IPv4 address, an IPv6 address, or a resolvable hostname.
 A node is skipped if a node with the same name or address already exists on the server.
 
 ## Building from source
-Requires JDK 11 or newer and Maven.
+Requires JDK 17 or newer and Maven.
 > mvn clean package
 
 This produces `target/netxms-csv-importer-5.2.0-jar-with-dependencies.jar`.
