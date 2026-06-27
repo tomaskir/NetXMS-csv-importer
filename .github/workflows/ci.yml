@@ -24,7 +24,7 @@ jobs:
 
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: surefire-reports
           path: target/surefire-reports/
@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload jar
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: netxms-csv-importer
           path: target/*-jar-with-dependencies.jar
