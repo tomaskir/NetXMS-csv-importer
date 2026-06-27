@@ -17,7 +17,7 @@ These should be placed in the working directory of the application (same directo
 More on the configuration files in the next section.
 
 After downloading the .jar and creating the configuration files, you can run the importer using:
-> java -jar netxms-csv-importer-5.2.0.jar
+> java -jar netxms-csv-importer-6.1.1.jar
 
 ## Configuration files
 
@@ -53,7 +53,7 @@ A node is skipped if a node with the same name or address already exists on the 
 Requires JDK 17 or newer and Maven.
 > mvn clean package
 
-This produces `target/netxms-csv-importer-5.2.0-jar-with-dependencies.jar`.
+This produces `target/netxms-csv-importer-6.1.1-jar-with-dependencies.jar`.
 
 Run the unit tests with:
 > mvn test
