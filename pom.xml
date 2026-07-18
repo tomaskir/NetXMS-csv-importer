@@ -23,7 +23,7 @@
         <lombok.version>1.18.46</lombok.version>
         <netxms-client.version>6.1.1</netxms-client.version>
         <slf4j.version>2.0.18</slf4j.version>
-        <junit.version>6.1.0</junit.version>
+        <junit.version>6.1.2</junit.version>
         <mockito.version>5.23.0</mockito.version>
     </properties>
 
